@@ -26,7 +26,7 @@ If you already have IntelliJ & Kotlin set up on your computer you can skip this.
 ### If you have Intellij & Java installed
 - Open Intellij and Create a new project.
 - In the 'New Project' dialogue click on Java on the left, and make sure Kotlin/JVM is checked.
-- If next to 'Project SDK' it says _<No SDK>_, click new and navigate to your Java SDK installation. On the Lab PCs this is _C:\Program Files\Java\jdk-10.0.1_.
+- If next to 'Project SDK' it says _<No SDK>_, click new and navigate to your Java SDK installation. On the Lab PCs this is _C:\Program Files\Java\jdk-10.0.1_
 - If you don't have Java installed then log into one of the Lab PCs and follow these instructions from the start.
 - Press 'Next'
 - If all goes according to plan, you should have a new empty IntelliJ Project.
