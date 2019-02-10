@@ -140,6 +140,7 @@ fun addOne(operand: Int) = 1 + operand // or in java:
 ### Your Turn!
 Write a single-expression function that calculates the hypotenuse from two passed in `Double`s `a` and `b` using `h^2 = a^2 + b^2`.
 Hint, you might find it useful to use the functions Math.sqrt() and optionally Math.pow().
+Use the below code to get started and ask the helpers if you have any issues.
 ```kotlin
 fun main(args: Array<String>) {
     println(calcHypotenuse(3.0, 4.0)) // 5
@@ -298,7 +299,7 @@ val string2 = "this is ugly but possible: ${if true then 25 else 24}" // "this i
 
 ### Your Turn!
 Write a function using _string templating_ that takes a time of day in seconds (i.e. 00:10am would be 10 minutes * 60 seconds = 600) and returns a string of the form `h:m:s` where h is the hours value (0-23), and m/s are minutes and seconds (0-59). Don't worry about the number of digits.
-
+Use the below code to get started and ask the helpers if you have any issues.
 ```kotlin
 fun main(args: Array<String>) {
     println(testTime(21522)) // 5:58:42
