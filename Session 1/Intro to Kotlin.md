@@ -297,7 +297,7 @@ val string2 = "this is ugly but possible: ${if true then 25 else 24}" // "this i
 ```
 
 ### Your Turn!
-Write a function using _string templating_ that takes a time of day in seconds (i.e. 00:10am would be 10 minutes * 60 seconds = 600) and returns a string of the form "h:m:s" where h is the hours value (0-23), and m/s are minutes and seconds (0-59). Don't worry about the number of digits.
+Write a function using _string templating_ that takes a time of day in seconds (i.e. 00:10am would be 10 minutes * 60 seconds = 600) and returns a string of the form `h:m:s` where h is the hours value (0-23), and m/s are minutes and seconds (0-59). Don't worry about the number of digits.
 
 ```kotlin
 fun main(args: Array<String>) {
