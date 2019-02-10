@@ -67,7 +67,7 @@ var x: String = "I have an explicit type"
 ```
 
 ### Nullable Types
-Every variable in kotlin be given a value on declaration. There are two 'exceptions' to this, Nullable Types and Lateinit variables.
+Every non-local variable (variable not declared in a function scope) in kotlin must be given a value on declaration (i.e. global variables & class member variables).  There are two 'exceptions' to this, Nullable Types and Lateinit variables.
 Variables in Kotlin are not allowed to have `null` values by default:
 ```Java
 Integer myInt = null; //In Java, this is allowed
@@ -136,6 +136,20 @@ Kotlin allows single expression function to be simplified in this way:
 fun addOne(operand: Int) = 1 + operand // or in java:
 //int addOne(int operand) { return 1 + operand; }
 ```
+
+### Your Turn!
+Write a single-expression function that calculates the hypotenuse from two passed in `Double`s `a` and `b` using `h^2 = a^2 + b^2`.
+Hint, you might find it useful to use the functions Math.sqrt() and optionally Math.pow().
+```kotlin
+fun main(args: Array<String>) {
+    println(calcHypotenuse(3.0, 4.0)) // 5
+    println(calcHypotenuse(5.0, 10.0)) //11.18...
+    println(calcHypotenuse(21.0, 24.0)) //31.89...
+}
+
+fun calcHypotenuse(a: Double, b: Double) = 
+```
+
 ### Calling Functions
 Calling functions works similarly to in Java, but allows for calling functions with _named arguments_. This is useful if you want to be more explicit with how you pass arguments into functions:
 ```kotlin
@@ -261,9 +275,10 @@ fun main(args: Array<String>) {
     println(testString(null)) // print null
 }
 
+//Can start with either of the definions below, delete the one you don't use:
 fun testString(myString: String?): Boolean? {
-
 }
+fun testString(myString: String?): Boolean? = ...
 ```
 
 ## String Templating
@@ -279,4 +294,20 @@ If you want to insert the results of complicated expressions directly into strin
 ```kotlin
 val string1 = "Current system time: ${System.currentTimeMillis()}"
 val string2 = "this is ugly but possible: ${if true then 25 else 24}" // "this is ugly but possible: 25"
+```
+
+### Your Turn!
+Write a function using _string templating_ that takes a time of day in seconds (i.e. 00:10am would be 10 minutes * 60 seconds = 600) and returns a string of the form "h:m:s" where h is the hours value (0-23), and m/s are minutes and seconds (0-59). Don't worry about the number of digits.
+
+```kotlin
+fun main(args: Array<String>) {
+    println(testTime(21522)) // 5:58:42
+    println(testTime(51234)) // 14:13:54
+    println(testTime(70313)) // 19:31:53
+}
+
+//Can start with either of the definions below, delete the one you don't use:
+fun testTime(timeSecs: Int): String {
+}
+fun testTime(timeSecs: Int): String = ...
 ```
