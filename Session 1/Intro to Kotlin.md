@@ -8,10 +8,7 @@ In this session, we'll cover the following concepts:
 - Function declarations & named arguments.
 - Nullable Types (!! operator, elvis operator, safe calls).
 - If/else and expression if.
-- When blocks
-- Collections
-- Lambdas + Anonymous Functions
-- .also{} and .apply{}
+- When Blocks
 - String Templating
 
 If you need help at any point, then raise your hand or ask a mentor - they'll be more than happy to help!
@@ -156,7 +153,7 @@ val capsString1: String = (nullableString!!).capitalize() // brackets are option
 val capsString2: String? = nullableString?.capitalize() // if nullableString is null, capsString becomes null.
 ```
 
-## If-Else
+## If-Else and Expression-If
 If-else works similarly to Java and other C-Style languages.
 ```Kotlin
 if (true) print("isTrue") 
@@ -198,9 +195,88 @@ All of these can be combined together to get the specific values you want in you
 You can also iterate over containers such as Java ArrayLists.
 
 ```kotlin
-val args = arrayOf("Hello", "World", "It's", "Kotlin")
+val args = arrayOf("Hello", "World", "It's", "Kotlin") //Helper function to make an Array<> of objects.
 for (arg in args) println(arg)
 ```
 
-## When (and why it's better than switch/case)
-A `when` block is Kotlin's equivalent to a switch/case statement.
+## When Blocks (and why it's better than switch/case)
+A `when` block is Kotlin's equivalent to a switch/case statement, and it looks like this:
+```kotlin
+when (3) {
+    1 -> print("Maths is broken") // If 3 == 1
+    2 -> { // If 3 == 2
+        print("The laws of the unverse are breaking down.") 
+        print("I hope this doesn't get printed!")
+    }
+    else -> print ("FooBar") // else
+}
+```
+This works in a similar way to a switch satement, except there is no fall-through.
+You can also specify multiple arguments on one line, as well as execute arbitrary expressions:
+```kotlin
+when (3) {
+    1, 1.plus(1) -> print("Maths is broken")
+    else -> print("All good here")
+}
+```
+There is even more flexibility to this than just values, you can also execute branches if a value is within a container or range using the `in` keyword, or check for a variables type using the `is` keyword.
+```kotlin
+val value: String? = "Hello World"  
+when(value) {
+    in arrayOf("Hello", "World") -> print("Not in the array")
+    is String -> print("Is a string but not valid")
+    else -> print("What has happened here.")
+}  
+```
+
+And finally, you can use a `when` block as a glorified if/else chain if you don't provide a value to check for i.e. it will default to when(true)
+```kotlin
+val x = 5
+when { //The same as when(true)
+    x.isOdd() -> print("x is odd")
+    x.isEven() -> print("x is even")
+    else -> print("x is broken")
+}
+```
+
+### Expression When
+Like `if`, `when` can be used as an expression i.e. whatever is after the `->` will be the value of the expression depending on the branch taken:
+```kotlin
+val testval = "hello"
+val notEmptyOrWhitespace = when {
+    testval.isBlank() || testval.isEmpty() -> false
+    else -> true
+}
+```
+
+### Your Turn!
+Write a function using `when` that takes a string, and returns true if the length of the string (`string.length`) is divisible by two AND the length of the string + 1 is divisible by 5, or return false otherwise. However, if the string is null, then you should return null.
+*Hint: modulus operator `%` works the same as in Java.*
+Use the below code to get started and ask the helpers if you have any issues.
+```kotlin
+fun main(args: Array<String>) {
+    println(testString("Hello")) // print false
+    println(testString("Java")) // print true
+    println(testString("aaaaaaaaaaaaaaaaaaaaaaaa")) // print true
+    println(testString(null)) // print null
+}
+
+fun testString(myString: String?): Boolean? {
+
+}
+```
+
+## String Templating
+Lastly, something amazingly useful. Kotlin allows you to insert values directly into strings without contatenation or a function like `sprintf` from C. To do that, you use the `$` operator followed by a variable place in-place where you want the value to go:
+
+```kotlin
+val myVal = 25
+val myString = "my value = $myVal" // "my value = 25"
+```
+
+If you want to insert the results of complicated expressions directly into strings you can do that as well, just surround the expression with a pair of brackets `{}`:
+
+```kotlin
+val string1 = "Current system time: ${System.currentTimeMillis()}"
+val string2 = "this is ugly but possible: ${if true then 25 else 24}" // "this is ugly but possible: 25"
+```
