@@ -117,11 +117,11 @@ There are so many different applications for lambdas, but usage with collections
 
 ### Now you!
 
-Using the code below, create a chain of function calls on the starting object that prints out all of the cube numbers in the given range (1, 8, 27, etc). No newlines and no semicolons (can all fit into a single chain!). Ask a helper if you're stuck.
+Using the code below, create a chain of function calls on the starting object that prints out all of the square numbers in the given range (1, 4, 9, 16, etc). No newlines and no semicolons (can all fit into a single chain!). Ask a helper if you're stuck.
 
 ```kotlin
 fun main() {
-    arrayListOf(0..500).YOURCODEHERE
+    arrayListOf(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25).YOURCODEHERE
 }
 ```
 
