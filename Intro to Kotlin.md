@@ -109,7 +109,7 @@ fun exampleFunc(myString: String, myInt: Int): String {
 ```
 
 As seen earlier with our main function, kotlin functions are defined starting with the keyword `fun`. The name then follows (`exampleFunc`) as well as any parameters, similar to java (`myString: String, myInt: Int`) using the Kotlin style of typing. `val`/`var` is left out, as fuunction parameters are always `val` (non-reassignable).
-We then give our return type just before the start of the code block (`String`, again this can be left out if the type can be assumed by the compiler).
+We then give our return type just before the start of the code block (`String`)
 
 Functions can also have default values:
 ```kotlin
