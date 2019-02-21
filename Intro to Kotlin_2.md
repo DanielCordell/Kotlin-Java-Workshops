@@ -168,6 +168,11 @@ return SomethingFactory().also {
     it.addParam(2)
 }.build()
 ```
+Or even
+
+```kotlin
+val mystr = "Hello World".also(::println) // Syntax for passing an alreay defined function!
+```
 
 ### Apply
 
@@ -181,3 +186,54 @@ println(result)
 How nice is that!
 
 You can use all of these together, I tend to use `apply` when I can, and `also` when I also need the `is` scope.
+
+## Classes and Data Classes
+
+Class definitions look similar as expected, with a few small differences:
+
+```kotlin
+class Customer(name: String) { //Or optionally class Customer constructor(name: String) {
+    val nameVar = name
+    
+    fun getSomeData() {
+        //Do something
+    }
+}
+```
+
+You can see that a class (optionally) has function-like brackets that denote the _primary constructor_. Kotlin classes always have one of these, whether it is default (no brackets) or explicit. All other constructors must call this one:
+
+```kotlin
+//Primary constructor
+class Customer(name: String) {
+    val nameVar = name
+    // Optional 'secondary' constructor, use keyword constructor.
+    constructor(name: String, id: Int): this(name + id.toString()){
+        // Other constructor-specific stuff
+    }
+}
+```
+
+Another thing to note that if, as above, you are passing in params just to save them to a variable, you can shorthand that directly into the constructor!
+
+```kotlin
+// Primary Constructor
+class Customer(val name: String) { //Can be var
+    // Optional 'secondary' constructors
+    constructor(name: String, id: Int): this(name + id.toString()){
+        // Other constructor-specific stuff
+    }
+}
+```
+
+### Data Classes
+These are pretty much what you'd think of as C-structs. They store POD, and define useful helper functions _for_ us.
+
+```kotlin
+data class User(val name: String, val age: Int)
+```
+
+This defines many functions for us:
+* `equals()`/`hashcode()` for comparisons/hashing
+* `toString()` of the form `"User(name=John, age=42)"`
+* `copy()`
